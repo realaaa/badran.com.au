@@ -46,10 +46,16 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now badran-site-pull.timer
 
 # 4. Caddy
-#    Add deploy/Caddyfile.snippet to /etc/caddy/Caddyfile, then:
-sudo caddy validate --config /etc/caddy/Caddyfile
+#    Caddy has no "add site" command: its config is /etc/caddy/Caddyfile.
+#    Point it at the snippet in the checkout (once), check, then reload.
+echo 'import /opt/badran.com.au/deploy/Caddyfile.snippet' | sudo tee -a /etc/caddy/Caddyfile
+sudo caddy validate --config /etc/caddy/Caddyfile   # should mention badran.com.au
 sudo systemctl reload caddy
+sudo journalctl -u caddy -f   # wait for "certificate obtained successfully", then Ctrl-C
 ```
+
+Caddy only reads its config on reload: if a pull changes `deploy/Caddyfile.snippet`,
+run `sudo systemctl reload caddy` for it to take effect.
 
 DNS: `A` (and `AAAA` if the VPS has IPv6) records for both `badran.com.au` and
 `www.badran.com.au` set to the VPS static IP (the same address as web.badran.com.au).
