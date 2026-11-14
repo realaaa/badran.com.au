@@ -6,10 +6,10 @@ After=network-online.target
 [Service]
 Type=oneshot
 User=badran-site
-ExecStart=/usr/bin/git -C /srv/badran.com.au pull --ff-only --quiet
+ExecStart=/usr/bin/git -C /opt/badran.com.au pull --ff-only --quiet
 # Hardening: the only thing this needs is write access to the checkout
 ProtectSystem=strict
-ReadWritePaths=/srv/badran.com.au
+ReadWritePaths=/opt/badran.com.au
 ProtectHome=read-only
 PrivateTmp=yes
 NoNewPrivileges=yes

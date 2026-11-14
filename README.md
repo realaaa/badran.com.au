@@ -31,17 +31,17 @@ sudo systemctl start badran-site-pull.service
 
 ```sh
 # 1. Unprivileged user that owns the checkout
-sudo useradd --system --home /srv/badran.com.au --shell /usr/sbin/nologin badran-site
+sudo useradd --system --home /opt/badran.com.au --shell /usr/sbin/nologin badran-site
 
 # 2. Clone (public repo: HTTPS clone, no key needed)
-sudo git clone https://github.com/realaaa/badran.com.au.git /srv/badran.com.au
-sudo chown -R badran-site:badran-site /srv/badran.com.au
+sudo git clone https://github.com/realaaa/badran.com.au.git /opt/badran.com.au
+sudo chown -R badran-site:badran-site /opt/badran.com.au
 
 #    Private repo instead: add a read-only deploy key for badran-site and clone via
 #    git@github.com:realaaa/badran.com.au.git
 
 # 3. Pull timer
-sudo cp /srv/badran.com.au/deploy/badran-site-pull.{service,timer} /etc/systemd/system/
+sudo cp /opt/badran.com.au/deploy/badran-site-pull.{service,timer} /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now badran-site-pull.timer
 
