@@ -1,0 +1,43 @@
+# badran.com.au — static front page
+# Paste into /etc/caddy/Caddyfile (or import it), then: sudo systemctl reload caddy
+#
+# Listing the http:// address explicitly stops Caddy's automatic HTTP->HTTPS
+# redirect, so the site is served on both. Deliberately no HSTS header:
+# old devices that can't do modern TLS must be able to use plain HTTP.
+
+badran.com.au, http://badran.com.au {
+	root * /srv/badran.com.au/public
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy no-referrer
+		-Server
+	}
+
+	# curl / wget on the front page get the plain-text version.
+	# Vary tells caches the response at / depends on User-Agent.
+	header / Vary User-Agent
+	@plaintext {
+		path /
+		header_regexp ua User-Agent ^(curl|Wget)
+	}
+	rewrite @plaintext /index.txt
+
+	# Old browsers still ask for /favicon.ico; answer quietly
+	respond /favicon.ico 204
+
+	# Never serve git metadata
+	@hidden path /.git /.git/*
+	respond @hidden 404
+
+	# .txt already gets text/plain from file_server; .vcf needs it set explicitly
+	header /badran.vcf Content-Type "text/vcard; charset=utf-8"
+
+	file_server
+}
+
+# www -> bare domain, keeping the visitor's scheme (HTTP stays HTTP)
+www.badran.com.au, http://www.badran.com.au {
+	redir {scheme}://badran.com.au{uri} permanent
+}

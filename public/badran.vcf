@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Anisimov;Aleksey;;;
+FN:Aleksey Anisimov
+ORG:Badran Tech
+TEL;TYPE=CELL,VOICE:+61 410 868 900
+EMAIL;TYPE=WORK,INTERNET:aleksey@badran.com.au
+EMAIL;TYPE=HOME,INTERNET:aleksey@aleksey.id.au
+URL;TYPE=WORK:https://badran.com.au/
+URL;TYPE=HOME:https://aleksey.id.au/
+ADR;TYPE=WORK:;;;Sydney;NSW;;Australia
+END:VCARD

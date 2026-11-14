@@ -1,0 +1,14 @@
+# Secrets
+.env
+.env.*
+.claude/settings.local.json
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

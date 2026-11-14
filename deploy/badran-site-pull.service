@@ -1,0 +1,15 @@
+[Unit]
+Description=Pull latest badran.com.au site from GitHub
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=badran-site
+ExecStart=/usr/bin/git -C /srv/badran.com.au pull --ff-only --quiet
+# Hardening: the only thing this needs is write access to the checkout
+ProtectSystem=strict
+ReadWritePaths=/srv/badran.com.au
+ProtectHome=read-only
+PrivateTmp=yes
+NoNewPrivileges=yes
