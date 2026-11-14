@@ -1,10 +1,11 @@
 [Unit]
-Description=Pull badran.com.au site every 5 minutes
+Description=Pull badran.com.au site daily
 
 [Timer]
-OnBootSec=1min
-OnUnitActiveSec=5min
-RandomizedDelaySec=30s
+OnCalendar=daily
+RandomizedDelaySec=1h
+# Run at next boot if the scheduled run was missed
+Persistent=true
 
 [Install]
 WantedBy=timers.target

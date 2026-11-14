@@ -13,14 +13,19 @@ public/            everything Caddy serves
 deploy/
   Caddyfile.snippet
   badran-site-pull.service   git pull --ff-only
-  badran-site-pull.timer     every 5 minutes
+  badran-site-pull.timer     daily
 resources/         original logo files (not served)
 ```
 
 ## Editing
 
 Edit `public/index.html` and `public/index.txt` together — they carry the same facts.
-Commit and push to `main`; the server picks it up within ~5 minutes.
+Commit and push to `main`; the server picks it up within a day. To publish
+immediately, on the server:
+
+```sh
+sudo systemctl start badran-site-pull.service
+```
 
 ## Server setup (one-off, Debian 13)
 
