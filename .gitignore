@@ -3,6 +3,9 @@
 .env.*
 .claude/settings.local.json
 
+# Local notes and specs (not published)
+docs/
+
 # Editors
 .vscode/
 .idea/

@@ -24,6 +24,15 @@ badran.com.au, http://badran.com.au {
 	}
 	rewrite @plaintext /index.txt
 
+	# Hard block for crawlers proven to ignore robots.txt. robots.txt stays
+	# the main mechanism; keep this list short (proven non-compliers only).
+	# They can still fetch /robots.txt.
+	@badbots {
+		header_regexp badbot User-Agent (?i)Bytespider
+		not path /robots.txt
+	}
+	respond @badbots 403
+
 	# Old browsers still ask for /favicon.ico; answer quietly
 	respond /favicon.ico 204
 
@@ -31,8 +40,10 @@ badran.com.au, http://badran.com.au {
 	@hidden path /.git /.git/*
 	respond @hidden 404
 
-	# .txt already gets text/plain from file_server; .vcf needs it set explicitly
+	# Explicit Content-Types (file_server keeps a Content-Type already set)
 	header /badran.vcf Content-Type "text/vcard; charset=utf-8"
+	header /robots.txt Content-Type "text/plain; charset=utf-8"
+	header /sitemap.xml Content-Type "application/xml"
 
 	file_server
 }

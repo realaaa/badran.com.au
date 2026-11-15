@@ -8,5 +8,5 @@ EMAIL;TYPE=WORK,INTERNET:aleksey@badran.com.au
 EMAIL;TYPE=HOME,INTERNET:aleksey@aleksey.id.au
 URL;TYPE=WORK:https://badran.com.au/
 URL;TYPE=HOME:https://aleksey.id.au/
-ADR;TYPE=WORK:;;;Sydney;NSW;;Australia
+ADR;TYPE=WORK:;;;Sutherland Shire;NSW;;Australia
 END:VCARD

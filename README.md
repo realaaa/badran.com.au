@@ -9,7 +9,8 @@ public/            everything Caddy serves
   index.txt        plain-text version (served to curl/wget at /)
   logo.png         1200px web copy of Badran-Full-Logo-Horizontal-1-052.png
   badran.vcf       contact card
-  robots.txt
+  robots.txt       blocks AI training crawlers, allows search and AI answers
+  sitemap.xml
 deploy/
   Caddyfile.snippet
   badran-site-pull.service   git pull --ff-only
@@ -68,6 +69,28 @@ curl -sI  http://badran.com.au/        # 200, no redirect to https
 curl -s   https://badran.com.au/       # plain text
 curl -sI  https://badran.com.au/.git/HEAD   # 404
 curl -sI  http://www.badran.com.au/    # 301 -> http://badran.com.au/
+curl -s https://badran.com.au/robots.txt
+curl -s https://badran.com.au/sitemap.xml
+curl -sI -A "Bytespider" https://badran.com.au/            # 403
+curl -sI -A "Bytespider" https://badran.com.au/robots.txt  # 200
+curl -sI -A "Claude-SearchBot" https://badran.com.au/      # 200
 systemctl list-timers badran-site-pull.timer
 journalctl -u badran-site-pull.service -n 20
 ```
+
+## Search engines & listings
+
+Manual, one-off. Verification is by DNS TXT record, so the site has no verification
+meta tags or files. Everywhere, use exactly the same name, phone and URL as the page:
+Badran Tech, 0410 868 900, https://badran.com.au/.
+
+- **Google Search Console:** add a *domain* property for `badran.com.au`, verify with
+  the DNS TXT record, then submit `https://badran.com.au/sitemap.xml`.
+- **Bing Webmaster Tools:** import the site from Search Console, then submit the sitemap.
+- **Google Business Profile:** service-area business (address hidden), primary category
+  "Computer support and services", service areas: the same suburbs as the page
+  (Cronulla, Caringbah, Miranda, Sutherland, Kirrawee, Gymea, Jannali, Engadine, Menai,
+  Woolooware, Kurnell).
+- **Bing Places** and **Apple Business Connect:** set up the same way.
+- **Directories:** True Local, Yellow Pages, Hotfrog, Sutherland Shire Chamber of
+  Commerce.

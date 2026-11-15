@@ -1,7 +1,40 @@
 BADRAN TECH
 ===========
 
-Managed IT, hosting and email for small businesses in Sydney.
+Managed IT support for small businesses in the Sutherland Shire, Sydney.
+
+Let's make your IT great again!
+
+
+What we do
+----------
+
+  - Day-to-day IT support
+  - Microsoft 365 setup and management
+  - Business email and domains (SPF/DKIM/DMARC), hosted locally with
+    an Australian provider in an Australian data centre, secured and
+    monitored with TLC
+  - Website hosting
+  - Backups
+  - Security basics
+  - On-site visits across the Shire
+
+
+Who it's for
+------------
+
+  Small businesses and sole traders in the Sutherland Shire and
+  southern Sydney who want their computers, email and website to just
+  work, and one local person to call when they don't. Advice in plain
+  English, from someone who knows your setup.
+
+
+Area served
+-----------
+
+  Cronulla, Caringbah, Miranda, Sutherland, Kirrawee, Gymea, Jannali,
+  Engadine, Menai, Woolooware, Kurnell and the rest of the Sutherland
+  Shire, with remote support across Sydney.
 
 
 Contact
@@ -22,4 +55,4 @@ Elsewhere
 
 
 --
-Badran Tech, Sydney NSW
+Badran Tech · ABN 46 643 286 442 · Sutherland Shire, Sydney NSW
